@@ -28,9 +28,11 @@ class MainActivity : AppCompatActivity() {
           override fun onResponseStarted(request: UrlRequest?, info: UrlResponseInfo?) {
             Log.d("onResponseStarted", info.toString())
 
-            val buffer = ByteBuffer.allocateDirect(1000)
+            val buffer = ByteBuffer.allocateDirect(126)
             request?.read(buffer)
-            Log.d("buffer", buffer.toString())
+
+            val byte = ByteArray(126)
+            Log.d("buffer", byte.contentToString())
           }
 
           override fun onReadCompleted(request: UrlRequest?, info: UrlResponseInfo?, byteBuffer: ByteBuffer?) {
